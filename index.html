@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="翔安区新圩第一中心幼儿园 - 闽南红砖古厝里的童趣园">
+  <title>翔安区新圩第一中心幼儿园 · 闽南风情</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fffaf5;
+      font-family: "SF Pro Text", "PingFang SC", "Noto Serif SC", "Microsoft YaHei", "Helvetica Neue", serif;
+      color: #2c241a;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      background-image: radial-gradient(circle at 10% 20%, rgba(193, 96, 54, 0.03) 2%, transparent 2.5%),
+                        radial-gradient(circle at 80% 70%, rgba(193, 96, 54, 0.04) 1.8%, transparent 2%);
+      background-size: 28px 28px, 32px 32px;
+    }
+
+    :root {
+      --minnan-red: #b84c2e;
+      --minnan-brick: #aa3e23;
+      --minnan-gold: #d9a13b;
+      --minnan-earth: #f0e2cf;
+      --minnan-dark: #3a2a24;
+      --paper-white: #fffcf8;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 28px 80px;
+      position: relative;
+    }
+
+    /* 红砖纹理背景 */
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: repeating-linear-gradient(90deg, rgba(184, 76, 46, 0.05) 0px, rgba(184, 76, 46, 0.05) 2px, transparent 2px, transparent 8px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* 顶部花砖装饰 */
+    .minnan-border {
+      height: 6px;
+      background: linear-gradient(90deg, var(--minnan-red), var(--minnan-gold), var(--minnan-red));
+      width: 120px;
+      margin: 0 auto 24px auto;
+      border-radius: 4px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 56px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-wrapper {
+      display: inline-flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      background: var(--paper-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05), 0 0 0 2px var(--minnan-gold), 0 0 0 5px #f7ede3;
+      transition: transform 0.2s;
+      overflow: hidden;
+    }
+    .logo img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+    .logo:hover {
+      transform: scale(1.02);
+    }
+
+    h1 {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--minnan-dark);
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #a13e24, #c26a48);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    /* 办园理念 - 放在原来“红砖古厝·童心港湾”的位置，更醒目 */
+    .philosophy-statement {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--minnan-brick);
+      background: rgba(217, 161, 59, 0.12);
+      display: inline-block;
+      padding: 12px 32px;
+      border-radius: 60px;
+      backdrop-filter: blur(4px);
+      margin-top: 8px;
+      letter-spacing: 2px;
+      border-left: 4px solid var(--minnan-gold);
+      border-right: 4px solid var(--minnan-gold);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .philosophy-statement small {
+      font-size: 16px;
+      font-weight: normal;
+      color: #b5734b;
+      display: inline-block;
+      margin-left: 10px;
+    }
+
+    /* 视频卡片 */
+    .media-section {
+      margin-bottom: 68px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .video-card {
+      background: var(--paper-white);
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -12px rgba(100, 50, 30, 0.2);
+      border: 1px solid rgba(184, 76, 46, 0.3);
+      transition: all 0.3s ease;
+    }
+    .video-card:hover {
+      box-shadow: 0 25px 40px -12px rgba(140, 70, 30, 0.25);
+      border-color: rgba(184, 76, 46, 0.5);
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      background: #e5d5c0;
+      cursor: pointer;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #cdbc9f;
+    }
+
+    .play-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(90, 50, 35, 0.15);
+      backdrop-filter: blur(3px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: background 0.2s;
+      border-radius: 32px;
+    }
+    .play-overlay:hover {
+      background: rgba(90, 50, 35, 0.25);
+    }
+    .play-btn {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 250, 240, 0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 0 3px #e6bc8e;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .play-btn::after {
+      content: "▶";
+      font-size: 34px;
+      color: var(--minnan-red);
+      margin-left: 5px;
+    }
+    .play-btn:hover {
+      transform: scale(1.06);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25), 0 0 0 4px #f3cf9f;
+    }
+
+    .loading-indicator {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      border: 4px solid rgba(180, 100, 60, 0.3);
+      border-top: 4px solid var(--minnan-red);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      z-index: 3;
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* 三宫格卡片：宗旨、培养目标、园本课程 */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin: 48px 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      background: rgba(255, 252, 245, 0.9);
+      backdrop-filter: blur(2px);
+      border-radius: 28px;
+      padding: 28px 24px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+      border-left: 6px solid var(--minnan-red);
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 30px -12px rgba(100, 50, 30, 0.2);
+      background: white;
+    }
+    /* 花角装饰 */
+    .card::after {
+      content: "❦";
+      font-size: 32px;
+      color: rgba(184, 76, 46, 0.08);
+      position: absolute;
+      bottom: 8px;
+      right: 12px;
+      font-family: serif;
+      pointer-events: none;
+    }
+
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      display: inline-block;
+      background: var(--minnan-earth);
+      width: 52px;
+      height: 52px;
+      line-height: 52px;
+      text-align: center;
+      border-radius: 30px;
+      color: var(--minnan-red);
+    }
+
+    .card h3 {
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--minnan-brick);
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+      border-left: 3px solid var(--minnan-gold);
+      padding-left: 14px;
+    }
+
+    .card p {
+      font-size: 18px;
+      line-height: 1.55;
+      color: #3a2c24;
+      font-weight: 500;
+    }
+
+    /* 园本课程卡片特殊边框色 */
+    .course-card {
+      border-left-color: var(--minnan-gold);
+    }
+    .course-card h3 {
+      color: #b86f2c;
+    }
+
+    /* 闽南纹样点缀 */
+    .minnan-pattern {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 30px 0 20px;
+      opacity: 0.5;
+    }
+    .minnan-pattern span {
+      font-size: 28px;
+      color: #c6865e;
+    }
+
+    .footer {
+      margin-top: 64px;
+      text-align: center;
+      font-size: 14px;
+      color: #b2805e;
+      border-top: 1px solid #f0dbc8;
+      padding-top: 32px;
+      position: relative;
+      z-index: 2;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 880px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 780px) {
+      .container {
+        padding: 32px 20px 60px;
+      }
+      h1 {
+        font-size: 34px;
+      }
+      .philosophy-statement {
+        font-size: 22px;
+        padding: 8px 20px;
+      }
+      .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+      .card h3 {
+        font-size: 22px;
+      }
+      .card p {
+        font-size: 16px;
+      }
+      .play-btn {
+        width: 64px;
+        height: 64px;
+      }
+      .play-btn::after {
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .logo {
+        width: 80px;
+        height: 80px;
+      }
+      .logo img {
+        width: 52px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+      .philosophy-statement {
+        font-size: 18px;
+        padding: 6px 16px;
+      }
+      .card {
+        padding: 20px 18px;
+      }
+    }
+
+    .fade-in {
+      animation: fadeSlideUp 0.7s ease-out forwards;
+    }
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container fade-in">
+  <div class="minnan-border"></div>
+
+  <div class="hero">
+    <div class="logo-wrapper">
+      <div class="logo">
+        <img src="image.png" alt="翔安区新圩第一中心幼儿园" onerror="this.onerror=null; this.parentElement.style.background='#f7ede3'; this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size:48px;\'>🏮</span>';">
+      </div>
+    </div>
+    <h1>翔安区新圩第一中心幼儿园</h1>
+    <!-- 办园理念 放在原先红砖古厝·童心港湾的位置 -->
+    <div class="philosophy-statement">
+      让教育充满情怀
+      <small>🏮</small>
+    </div>
+  </div>
+
+  <!-- 视频区域 (懒加载优化) -->
+  <div class="media-section">
+    <div class="video-card">
+      <div class="video-container" id="videoContainer">
+        <video 
+          id="kindergartenVideo"
+          playsinline
+          preload="none"
+          poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1280 720'%3E%3Crect width='1280' height='720' fill='%23E7D8C5'/%3E%3Ccircle cx='640' cy='360' r='80' fill='%23B78F6E' opacity='0.4'/%3E%3Cpolygon points='620,325 670,360 620,395' fill='%23945E3A'/%3E%3Ctext x='640' y='500' font-size='28' font-family='serif' text-anchor='middle' fill='%23A56B3A'%3E🎋 新圩一幼 欢喜相招 🎋%3C/text%3E%3C/svg%3E"
+          style="width:100%; display:block;"
+        ></video>
+        <div class="play-overlay" id="playOverlay">
+          <div class="play-btn" id="playButton"></div>
+        </div>
+        <div class="loading-indicator" id="loadingSpinner"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三个核心卡片：宗旨、培养目标、园本课程 (严格按照提供文案，无多余文字) -->
+  <div class="cards-grid">
+    <!-- 办园宗旨 -->
+    <div class="card">
+      <div class="card-icon">✨</div>
+      <h3>办园宗旨</h3>
+      <p>彼此映照 欣喜成长</p>
+    </div>
+    <!-- 培养目标 -->
+    <div class="card">
+      <div class="card-icon">🏞️</div>
+      <h3>培养目标</h3>
+      <p>知乡 爱乡 身心和谐发展的新圩一幼娃</p>
+    </div>
+    <!-- 园本课程 -->
+    <div class="card course-card">
+      <div class="card-icon">📖</div>
+      <h3>园本课程</h3>
+      <p>新曦乐生活 善渊弘文化</p>
+    </div>
+  </div>
+
+  <!-- 闽南风格点缀 -->
+  <div class="minnan-pattern">
+    <span>🏮</span><span>🧧</span><span>🐉</span><span>🍃</span><span>🎋</span>
+  </div>
+
+  <div class="footer">
+    🌟 翔安区新圩第一中心幼儿园 · 红砖古厝里的温情乐园 🌟
+  </div>
+</div>
+
+<script>
+  (function() {
+    // 视频懒加载 (微信优化，按需加载)
+    const video = document.getElementById('kindergartenVideo');
+    const playOverlay = document.getElementById('playOverlay');
+    const playBtn = document.getElementById('playButton');
+    const spinner = document.getElementById('loadingSpinner');
+    const VIDEO_SRC = 'video.mp4';
+    let isLoading = false;
+    let loadAttempted = false;
+    let videoReady = false;
+
+    function hideOverlayAndLoading() {
+      if (playOverlay) playOverlay.style.display = 'none';
+      if (spinner) spinner.style.display = 'none';
+    }
+
+    function showErrorAndRetain() {
+      if (spinner) spinner.style.display = 'none';
+      isLoading = false;
+      if (playOverlay) {
+        const btn = document.querySelector('.play-btn');
+        if (btn) {
+          btn.style.opacity = '0.7';
+          setTimeout(() => { if(btn) btn.style.opacity = '1'; }, 1200);
+        }
+      }
+    }
+
+    function loadAndPlay() {
+      if (isLoading) return;
+      if (videoReady && video.readyState >= 2) {
+        video.play().then(() => {
+          hideOverlayAndLoading();
+        }).catch(e => {
+          console.warn('播放失败', e);
+          hideOverlayAndLoading();
+        });
+        return;
+      }
+      if (!loadAttempted) {
+        isLoading = true;
+        loadAttempted = true;
+        if (spinner) spinner.style.display = 'block';
+        video.src = VIDEO_SRC;
+        video.preload = 'auto';
+        video.load();
+
+        const onCanPlay = () => {
+          video.removeEventListener('canplaythrough', onCanPlay);
+          video.removeEventListener('loadeddata', onCanPlay);
+          if (isLoading) {
+            videoReady = true;
+            video.play().then(() => {
+              hideOverlayAndLoading();
+              isLoading = false;
+            }).catch(err => {
+              console.warn('play after load error', err);
+              isLoading = false;
+              hideOverlayAndLoading();
+            });
+          }
+        };
+        const onError = () => {
+          video.removeEventListener('canplaythrough', onCanPlay);
+          video.removeEventListener('error', onError);
+          isLoading = false;
+          loadAttempted = false;
+          showErrorAndRetain();
+        };
+        video.addEventListener('canplaythrough', onCanPlay, { once: true });
+        video.addEventListener('loadeddata', onCanPlay, { once: true });
+        video.addEventListener('error', onError, { once: true });
+        setTimeout(() => {
+          if (isLoading) {
+            console.warn('视频加载超时');
+            onError();
+          }
+        }, 10000);
+      } else {
+        if (video.readyState === 0 || video.networkState === 3) {
+          loadAttempted = false;
+          video.src = '';
+          video.load();
+          setTimeout(() => {
+            video.src = VIDEO_SRC;
+            loadAndPlay();
+          }, 50);
+        } else {
+          video.play().then(() => {
+            hideOverlayAndLoading();
+            videoReady = true;
+          }).catch(() => {
+            if (playOverlay) playOverlay.style.display = 'flex';
+          });
+        }
+      }
+    }
+
+    if (playBtn) {
+      playBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        loadAndPlay();
+      });
+    }
+    if (playOverlay) {
+      playOverlay.addEventListener('click', (e) => {
+        if (e.target === playBtn || (playBtn && playBtn.contains(e.target))) return;
+        loadAndPlay();
+      });
+    }
+    video.addEventListener('play', () => {
+      if (playOverlay) playOverlay.style.display = 'none';
+      if (spinner) spinner.style.display = 'none';
+      isLoading = false;
+      videoReady = true;
+    });
+    const sources = video.querySelectorAll('source');
+    sources.forEach(s => s.remove());
+    if (!video.getAttribute('src')) {
+      video.removeAttribute('src');
+      video.load();
+    }
+    video.preload = 'none';
+  })();
+</script>
+</body>
+</html>
