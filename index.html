@@ -13,7 +13,7 @@
     }
 
     body {
-      background-color: #fffaf3;
+      background-color: #fff8f0;
       font-family: -apple-system, "PingFang SC", "Noto Serif SC", "Helvetica Neue", "SF Pro Text", system-ui, serif;
       color: #2b241c;
       line-height: 1.5;
@@ -28,10 +28,10 @@
       --clay-bg: #f7ede2;
       --paper: #ffffff;
       --text-dark: #2c241a;
-      --text-soft: #6b4f38;
+      --brick-light: #e3c9b5;
     }
 
-    /* 红砖纹理背景 (细微) */
+    /* 红砖墙背景纹理 (细腻) */
     body::before {
       content: "";
       position: fixed;
@@ -39,7 +39,9 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: repeating-linear-gradient(45deg, rgba(188, 90, 60, 0.02) 0px, rgba(188, 90, 60, 0.02) 2px, transparent 2px, transparent 8px);
+      background-image: 
+        repeating-linear-gradient(45deg, rgba(188, 90, 60, 0.03) 0px, rgba(188, 90, 60, 0.03) 2px, transparent 2px, transparent 12px),
+        repeating-linear-gradient(135deg, rgba(188, 90, 60, 0.02) 0px, rgba(188, 90, 60, 0.02) 1px, transparent 1px, transparent 10px);
       pointer-events: none;
       z-index: 0;
     }
@@ -52,22 +54,22 @@
       z-index: 2;
     }
 
-    /* 闽南燕尾脊装饰线条 (顶部) */
+    /* 燕尾脊装饰线条 (顶部) */
     .swallow-tail {
       display: flex;
       justify-content: center;
-      gap: 8px;
-      margin-bottom: 20px;
+      gap: 6px;
+      margin-bottom: 24px;
     }
     .swallow-tail span {
-      width: 40px;
-      height: 2px;
+      width: 48px;
+      height: 3px;
       background: linear-gradient(90deg, var(--brick-red), var(--golden));
-      border-radius: 2px;
+      border-radius: 3px;
     }
     .swallow-tail span:first-child,
     .swallow-tail span:last-child {
-      width: 60px;
+      width: 72px;
     }
 
     /* 头部区域 */
@@ -83,8 +85,8 @@
       margin-bottom: 28px;
     }
     .logo {
-      width: 156px;
-      height: 156px;
+      width: 160px;
+      height: 160px;
       background: transparent;
       display: flex;
       align-items: center;
@@ -98,7 +100,7 @@
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.05));
     }
     .logo .fallback-icon {
-      font-size: 92px;
+      font-size: 96px;
       color: var(--brick-red);
     }
 
@@ -111,20 +113,21 @@
       line-height: 1.2;
     }
 
-    /* 办园理念 - 更突出但保持简约 */
+    /* 办园理念 - 简洁大气 */
     .philosophy-statement {
       font-size: 28px;
       font-weight: 500;
       color: var(--brick-deep);
       display: inline-block;
-      padding: 8px 32px;
-      background: rgba(217, 161, 59, 0.08);
+      padding: 10px 36px;
+      background: rgba(217, 161, 59, 0.1);
       border-radius: 60px;
       backdrop-filter: blur(2px);
       letter-spacing: 2px;
+      border: 1px solid rgba(188, 90, 60, 0.2);
     }
 
-    /* 视频卡片 - 简约大气 */
+    /* 视频卡片 - 红砖古厝风格 */
     .media-section {
       margin-bottom: 80px;
     }
@@ -135,6 +138,7 @@
       overflow: hidden;
       box-shadow: 0 20px 32px -12px rgba(0, 0, 0, 0.08);
       transition: box-shadow 0.3s;
+      border: 1px solid #f0dfce;
     }
     .video-card:hover {
       box-shadow: 0 28px 40px -16px rgba(0, 0, 0, 0.12);
@@ -155,7 +159,6 @@
       object-fit: cover;
     }
 
-    /* 播放按钮 - 圆润大气 */
     .play-overlay {
       position: absolute;
       top: 0;
@@ -216,7 +219,7 @@
       100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
-    /* 三卡片 - 简洁但增加细节 */
+    /* 三卡片 - 融入闽南红砖、古厝元素 */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -228,33 +231,68 @@
       background: var(--paper);
       border-radius: 28px;
       padding: 36px 28px;
-      transition: all 0.25s ease;
-      border: 1px solid #f0e2d2;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      transition: all 0.3s ease;
+      border: 1px solid #e8d6c4;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
       position: relative;
+      overflow: hidden;
+    }
+    /* 红砖墙纹理背景 (卡片内) */
+    .card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: repeating-linear-gradient(45deg, rgba(188, 90, 60, 0.02) 0px, rgba(188, 90, 60, 0.02) 1px, transparent 1px, transparent 8px);
+      pointer-events: none;
+      z-index: 0;
     }
     .card:hover {
       transform: translateY(-6px);
-      border-color: #e0cdb5;
-      box-shadow: 0 20px 32px -12px rgba(100, 60, 30, 0.12);
-    }
-    /* 闽南花砖角花点缀 */
-    .card::before {
-      content: "❦";
-      font-size: 28px;
-      color: rgba(188, 90, 60, 0.12);
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      font-family: serif;
-      pointer-events: none;
+      border-color: #dabb9a;
+      box-shadow: 0 24px 36px -16px rgba(100, 60, 30, 0.15);
     }
 
+    /* 古厝窗花装饰 (左上角) */
+    .card::before {
+      content: "❦";
+      font-size: 32px;
+      color: rgba(188, 90, 60, 0.1);
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-family: serif;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* 闽南元素图标区 */
     .card-icon {
-      font-size: 44px;
+      position: relative;
+      z-index: 2;
+      font-size: 56px;
       margin-bottom: 24px;
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      gap: 12px;
       color: var(--brick-red);
+    }
+    /* 为图标增加红砖底座效果 */
+    .card-icon .icon-badge {
+      background: rgba(188, 90, 60, 0.1);
+      width: 80px;
+      height: 80px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 24px;
+      transition: background 0.2s;
+      border: 1px solid rgba(217, 161, 59, 0.3);
+    }
+    .card:hover .icon-badge {
+      background: rgba(188, 90, 60, 0.18);
     }
 
     .card h3 {
@@ -263,6 +301,8 @@
       color: var(--brick-deep);
       margin-bottom: 16px;
       letter-spacing: 1px;
+      position: relative;
+      z-index: 2;
     }
 
     .card p {
@@ -270,18 +310,28 @@
       line-height: 1.5;
       color: var(--text-dark);
       font-weight: 500;
+      position: relative;
+      z-index: 2;
     }
 
-    /* 闽南特色底部装饰 */
+    /* 燕尾脊小点缀 (卡片底部) */
+    .card-footer-line {
+      margin-top: 24px;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--golden), transparent);
+      border-radius: 2px;
+    }
+
+    /* 闽南底部装饰 */
     .minnan-footer-decoration {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin: 20px 0 24px;
+      gap: 20px;
+      margin: 20px 0 28px;
     }
-    .minnan-footer-decoration i {
-      font-style: normal;
-      font-size: 20px;
+    .minnan-footer-decoration span {
+      font-size: 22px;
       color: var(--golden);
       opacity: 0.6;
     }
@@ -307,8 +357,8 @@
         font-size: 24px;
       }
       .logo {
-        width: 130px;
-        height: 130px;
+        width: 140px;
+        height: 140px;
       }
       .cards-grid {
         gap: 28px;
@@ -318,6 +368,11 @@
       }
       .card h3 {
         font-size: 24px;
+      }
+      .card-icon .icon-badge {
+        width: 70px;
+        height: 70px;
+        font-size: 48px;
       }
     }
 
@@ -333,8 +388,8 @@
         padding: 6px 24px;
       }
       .logo {
-        width: 110px;
-        height: 110px;
+        width: 120px;
+        height: 120px;
       }
     }
 
@@ -365,6 +420,11 @@
       .card p {
         font-size: 16px;
       }
+      .card-icon .icon-badge {
+        width: 64px;
+        height: 64px;
+        font-size: 40px;
+      }
     }
 
     .fade-in {
@@ -384,7 +444,7 @@
 </head>
 <body>
 <div class="container fade-in">
-  <!-- 燕尾脊简化线条 -->
+  <!-- 燕尾脊线条 -->
   <div class="swallow-tail">
     <span></span><span></span><span></span>
   </div>
@@ -395,7 +455,7 @@
         <img src="image.png" alt="翔安区新圩第一中心幼儿园" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'fallback-icon\'>🏮</span>';">
       </div>
     </div>
-    <h1>翔安区新圩第一中心幼儿园</h1>
+    <h1>翔安区新圩第一中心幼儿园欢迎您</h1>
     <div class="philosophy-statement">让教育充满情怀</div>
   </div>
 
@@ -418,27 +478,40 @@
     </div>
   </div>
 
-  <!-- 三卡片：宗旨、培养目标、园本课程（文案严格依照） -->
+  <!-- 三卡片：融入闽南元素图标 -->
   <div class="cards-grid">
+    <!-- 办园宗旨：红砖灯笼 -->
     <div class="card">
-      <div class="card-icon">✨</div>
+      <div class="card-icon">
+        <div class="icon-badge">🏮</div>
+      </div>
       <h3>办园宗旨</h3>
       <p>彼此映照 欣喜成长</p>
+      <div class="card-footer-line"></div>
     </div>
+    <!-- 培养目标：闽南祥龙 (龙柱/吉祥) -->
     <div class="card">
-      <div class="card-icon">🏞️</div>
+      <div class="card-icon">
+        <div class="icon-badge">🐉</div>
+      </div>
       <h3>培养目标</h3>
       <p>知乡 爱乡 身心和谐发展的新圩一幼娃</p>
+      <div class="card-footer-line"></div>
     </div>
+    <!-- 园本课程：古卷竹简 代表文化传承 -->
     <div class="card">
-      <div class="card-icon">📖</div>
+      <div class="card-icon">
+        <div class="icon-badge">📜</div>
+      </div>
       <h3>园本课程</h3>
       <p>新曦乐生活 善渊弘文化</p>
+      <div class="card-footer-line"></div>
     </div>
   </div>
 
+  <!-- 闽南装饰：红砖花砖意象 -->
   <div class="minnan-footer-decoration">
-    <i>🏮</i> <i>🧧</i> <i>🐉</i> <i>🍃</i> <i>🎋</i>
+    <span>🧱</span> <span>🏮</span> <span>🐉</span> <span>🍃</span> <span>🎋</span>
   </div>
   <div class="footer">
     🌾 翔安区新圩第一中心幼儿园 · 红砖古厝里的童年时光 🌾
